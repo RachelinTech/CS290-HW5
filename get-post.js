@@ -11,11 +11,28 @@ app.set("view engine", "handlebars");
 app.set("port", 3925);
 
 app.get("/",function(req,res){
-	res.render("get_home");
+	queryList = [];
+	for (var q in req.query){
+		queryList.push({"query":q, "value":req.query[q]})
+	}
+	var context = {};
+	context.queryList = queryList;
+	res.render("get_table", context);
 });
 
 app.post("/",function(req,res){
-	res.render("post_home");
+	queryList = [];
+	bodyList = [];
+	for (var i in req.query){
+		queryList.push({"query":i, "value":req.query[i]})
+	}
+	for (var i in req.body){
+		bodyList.push({"bodyItem":i, "bodyValue":req.body[i]})
+	}
+	var context = {};
+	context.queryList = queryList;
+	context.bodyList = bodyList;
+	res.render("post_table", context);
 });
 
 app.use(function(req,res){

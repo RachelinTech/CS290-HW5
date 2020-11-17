@@ -1,0 +1,23 @@
+<h1>POST Request Received</h1>
+
+<table>
+  <caption>Query Values Received:</caption>
+  {{#each queryList}}
+  	<tr>
+    	<th>{{this.query}}</th>
+    	<td>{{this.value}}</td>
+    </tr>
+  {{/each}}
+</table>
+
+<br>
+
+<table>
+  <caption>Form Data Received:</caption>
+  {{#each bodyList}}
+  	<tr>
+    	<th>{{this.bodyItem}}</th>
+    	<td>{{this.bodyValue}}</td>
+    </tr>
+  {{/each}}
+</table>
